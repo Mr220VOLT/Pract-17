@@ -1,0 +1,18 @@
+import re
+try:
+    file = open("Сас.txt", "r", encoding = "UTF-8")
+    fileRead = file.read()
+    fileRead = fileRead.replace("\ufeff", "")
+    # fileRead = fileRead.split("\n")
+    print (fileRead)
+    file.close()
+    prices = re.findall(r'\d+', fileRead)
+    print (prices)
+    result = 0
+    for i in prices:
+        result += int(i)
+    print (result)
+except FileNotFoundError:
+    print ("Файл не найден!")
+except Exception:
+    print ("Непредвиденная ошибка!")
